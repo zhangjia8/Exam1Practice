@@ -164,7 +164,7 @@ def problem0a(n):
     #        ASK FOR HELP if you do not understand this hint.
     # ------------------------------------------------------------------
     k = sum_of_digits(n)
-    if k%2 !=0:
+    if k % 2 != 0:
         return True
     return False
 
@@ -233,7 +233,7 @@ def problem0b(n):
     # ------------------------------------------------------------------
     total = 0
     for k in range(2, n+1):
-        if is_prime(k) == True:
+        if is_prime(k) is True:
             total = total+1
     return total
 
