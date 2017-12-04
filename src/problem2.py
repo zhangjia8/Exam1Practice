@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 2.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jiatong Zhang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,20 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render(0.5)
+    window.get_next_mouse_click()
+    st = rectangle.get_upper_right_corner()
+    en = rectangle.get_lower_left_corner()
+    line = rg.Line(st, en)
+    line.arrow = 'last'
+    line.attach_to(window)
+    window.render(0.5)
+    window.get_next_mouse_click()
+    circle.fill_color = rectangle.outline_color
+    window.render(0.5)
+
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -173,7 +187,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -181,6 +195,21 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+    rect.attach_to(win)
+    x1 = rect.get_upper_right_corner().x
+    x2 = rect.get_lower_left_corner().x
+    y1 = rect.get_upper_right_corner().y
+    y2 = rect.get_lower_left_corner().y
+    for k in range(n):
+        c1 = rg.Point(x1, y1)
+        c2 = rg.Point(x2, y2)
+        rec = rg.Rectangle(c1, c2)
+        rec.attach_to(win)
+        x1 = x1 + delta
+        x2 = x2 - delta
+        y1 = y1 - delta
+        y2 = y2 + delta
+    win.render()
 
 
 # ----------------------------------------------------------------------
